@@ -34,6 +34,11 @@ export class Cons extends List {
   cata({ Cons }) {
     return Cons(this._head, this._tail);
   }
+
+  *[Symbol.iterator]() {
+    yield this._head;
+    yield* this._tail;
+  }
 }
 
 export const cons = x => xs =>
@@ -56,6 +61,10 @@ export class Lazy extends List {
   cata({ Lazy }) {
     return Lazy(this.run);
   }
+
+  *[Symbol.iterator]() {
+    yield* this.run();
+  }
 }
 
 export const lazy = f =>
@@ -73,6 +82,8 @@ export class Nil extends List {
   cata({ Nil }) {
     return Nil();
   }
+
+  *[Symbol.iterator]() {}
 }
 
 export const nil = () =>
