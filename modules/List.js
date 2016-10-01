@@ -94,3 +94,5 @@ export const append = x => xs =>
 
 export const fromArray = xs =>
   xs.reduce((rest, x) => append(x)(rest), nil());
+
+export const toArray = Array.from;
