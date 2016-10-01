@@ -25,6 +25,10 @@ const at2d = v => u => x => xss =>
   new ListZipper2d(at(v)(repeat(x))(xss).map(at(u)(x)));
 export { at2d as at };
 
+const toList2d = a => b => c => d => z =>
+  toList(a)(b)(z).map(toList(c)(d));
+export { toList2d as toList };
+
 const left2d = z =>
   new ListZipper2d(z._value.map(left));
 export { left2d as left };
