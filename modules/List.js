@@ -1,3 +1,5 @@
+import cata from 'cata';
+
 export default class List {
   static of(x) {
     return cons(x)(nil());
@@ -96,3 +98,16 @@ export const fromArray = xs =>
   xs.reduce((rest, x) => append(x)(rest), nil());
 
 export const toArray = Array.from;
+
+export const head = cata({
+  Cons: (x, xs) => x,
+  Lazy: run => head(run()),
+});
+
+export const tail = cata({
+  Cons: (x, xs) => xs,
+  Lazy: run => tail(run()),
+});
+
+export const iterate = f => x =>
+  cons(x)(lazy(() => iterate(f)(f(x))));
