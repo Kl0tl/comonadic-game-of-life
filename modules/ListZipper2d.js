@@ -21,6 +21,10 @@ export default class ListZipper2d {
   }
 }
 
+const at2d = v => u => x => xss =>
+  new ListZipper2d(at(v)(repeat(x))(xss).map(at(u)(x)));
+export { at2d as at };
+
 const left2d = z =>
   new ListZipper2d(z._value.map(left));
 export { left2d as left };
