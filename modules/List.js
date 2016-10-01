@@ -1,4 +1,5 @@
 import cata from 'cata';
+import { id } from 'combinators';
 
 export default class List {
   static of(x) {
@@ -111,3 +112,23 @@ export const tail = cata({
 
 export const iterate = f => x =>
   cons(x)(lazy(() => iterate(f)(f(x))));
+
+export const repeat = iterate(id);
+
+export const splitAt = n => xs =>
+  n === 0 ? [nil(), xs] : xs.cata({
+    Cons: (x, xs) => {
+      const [as, bs] = splitAt(n - 1)(xs);
+      return [cons(x)(as), bs];
+    },
+    Lazy: run => splitAt(n)(run()),
+    Nil: () => [nil(), nil()],
+  });
+
+export const foldl = f => y => cata({
+  Nil: () => y,
+  Lazy: run => foldl(f)(y)(run()),
+  Cons: (x, xs) => foldl(f)(f(y)(x))(xs),
+});
+
+export const reverse = foldl(xs => x => cons(x)(xs))(nil());
