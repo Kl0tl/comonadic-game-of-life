@@ -9,4 +9,7 @@ module.exports = {
     path: relative('dist'),
     filename: 'bundle.js',
   },
+  resolve: {
+    modulesDirectories: ['modules', 'node_modules'],
+  },
 };
