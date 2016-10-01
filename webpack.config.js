@@ -4,7 +4,7 @@ const relative = filepath =>
 
 module.exports = {
   devtool: 'source-map',
-  entry: relative('index.js'),
+  entry: ['babel-regenerator-runtime', relative('index.js')],
   output: {
     path: relative('dist'),
     filename: 'bundle.js',
