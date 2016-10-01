@@ -3,6 +3,7 @@ const relative = filepath =>
   resolve(__dirname, filepath);
 
 module.exports = {
+  devtool: 'source-map',
   entry: relative('index.js'),
   output: {
     path: relative('dist'),
