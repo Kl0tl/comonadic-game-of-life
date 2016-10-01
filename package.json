@@ -2,6 +2,10 @@
   "name": "comonadic-game-of-life",
   "version": "1.0.0",
   "description": "Conway’s Game of Life implemented with Comonads for learning purpose",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "webpack"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kl0tl/comonadic-game-of-life.git"
@@ -11,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kl0tl/comonadic-game-of-life/issues"
   },
-  "homepage": "https://github.com/kl0tl/comonadic-game-of-life#readme"
+  "homepage": "https://github.com/kl0tl/comonadic-game-of-life#readme",
+  "devDependencies": {
+    "webpack": "^1.13.2"
+  }
 }
