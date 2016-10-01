@@ -30,6 +30,10 @@ export class Cons extends List {
   chain(f) {
     return f(this._head).concat(this._tail.chain(f));
   }
+
+  cata({ Cons }) {
+    return Cons(this._head, this._tail);
+  }
 }
 
 export const cons = x => xs =>
@@ -48,6 +52,10 @@ export class Lazy extends List {
   chain(f) {
     return lazy(() => this.run().chain(f));
   }
+
+  cata({ Lazy }) {
+    return Lazy(this.run);
+  }
 }
 
 export const lazy = f =>
@@ -60,6 +68,10 @@ export class Nil extends List {
 
   chain(f) {
     return nil();
+  }
+
+  cata({ Nil }) {
+    return Nil();
   }
 }
 
