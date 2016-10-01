@@ -12,4 +12,13 @@ module.exports = {
   resolve: {
     modulesDirectories: ['modules', 'node_modules'],
   },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        loader: 'babel',
+        exclude: /node_modules/,
+      },
+    ],
+  },
 };
