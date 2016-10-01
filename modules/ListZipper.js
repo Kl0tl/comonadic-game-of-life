@@ -1,4 +1,4 @@
-import { cons, head, iterate, repeat, reverse, splitAt, tail } from 'List';
+import { cons, head, iterate, repeat, reverse, splitAt, tail, take } from 'List';
 
 export default class ListZipper {
   constructor(_left, _value, _right) {
@@ -29,6 +29,9 @@ export const at = n => x => xs => {
   return new ListZipper(reverse(_left).concat(repeat(x)),
     head(rest), tail(rest).concat(repeat(x)));
 };
+
+export const toList = a => b => z =>
+  reverse(take(a)(z._left)).concat(cons(z._value)(take(b)(z._right)));
 
 export const left = z =>
   new ListZipper(tail(z._left), head(z._left),

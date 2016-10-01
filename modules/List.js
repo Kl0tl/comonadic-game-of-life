@@ -110,6 +110,13 @@ export const tail = cata({
   Lazy: run => tail(run()),
 });
 
+export const take = n => xs =>
+  n <= 0 ? nil() : xs.cata({
+    Cons: (x, xs) => cons(x)(take(n - 1)(xs)),
+    Lazy: run => take(n)(run()),
+    Nil: id,
+  });
+
 export const iterate = f => x =>
   cons(x)(lazy(() => iterate(f)(f(x))));
 
