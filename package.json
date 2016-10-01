@@ -1,0 +1,15 @@
+{
+  "name": "comonadic-game-of-life",
+  "version": "1.0.0",
+  "description": "Conway’s Game of Life implemented with Comonads for learning purpose",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kl0tl/comonadic-game-of-life.git"
+  },
+  "author": "Cyril Sobierajewicz <sobierajewicz.cyril@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kl0tl/comonadic-game-of-life/issues"
+  },
+  "homepage": "https://github.com/kl0tl/comonadic-game-of-life#readme"
+}
