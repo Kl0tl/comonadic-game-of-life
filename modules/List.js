@@ -88,3 +88,9 @@ export class Nil extends List {
 
 export const nil = () =>
   new Nil();
+
+export const append = x => xs =>
+  xs.concat(List.of(x));
+
+export const fromArray = xs =>
+  xs.reduce((rest, x) => append(x)(rest), nil());
